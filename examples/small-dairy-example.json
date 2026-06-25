@@ -1,0 +1,114 @@
+{
+  "farm": {
+    "name": "Example Farm Dairy",
+    "timezone": "Europe/Amsterdam",
+    "planningHorizonDays": 7,
+    "maximumActiveProductionHoursPerDay": 8
+  },
+  "milkSupply": {
+    "dailyMilkLitres": 300,
+    "milkings": [
+      {
+        "name": "Morning milking",
+        "start": "05:00",
+        "end": "08:00",
+        "litres": 150
+      },
+      {
+        "name": "Evening milking",
+        "start": "17:00",
+        "end": "20:00",
+        "litres": 150
+      }
+    ]
+  },
+  "rawMilkTank": {
+    "count": 1,
+    "capacityLitres": 1700,
+    "maxMilkAgeHours": 72,
+    "milkAgeCountedFrom": "first_milk_after_cleaning",
+    "cleaningDurationMinutes": 30,
+    "preferredCleaningBeforeMilking": true,
+    "cleaningSchedule": [
+      { "day": "Monday", "start": "16:00", "end": "16:30" },
+      { "day": "Wednesday", "start": "16:00", "end": "16:30" },
+      { "day": "Friday", "start": "16:00", "end": "16:30" }
+    ]
+  },
+  "machines": [
+    { "id": "flow_pasteurizer", "name": "Flow pasteurizer" },
+    { "id": "batch_pasteurizer", "name": "Batch pasteurizer", "capacityLitres": 500 },
+    { "id": "bottling_labeling_line", "name": "Bottling and labelling line" }
+  ],
+  "products": [
+    {
+      "id": "milk",
+      "name": "Bottled milk",
+      "batchLitresMin": 175,
+      "batchLitresMax": 250,
+      "frequencyPerWeek": 2,
+      "shelfLifeDays": 9,
+      "activeProductionHours": 3,
+      "machineIds": ["flow_pasteurizer", "bottling_labeling_line"]
+    },
+    {
+      "id": "chocolate_milk",
+      "name": "Chocolate milk",
+      "batchLitres": 160,
+      "frequencyPerWeek": 1,
+      "shelfLifeDays": 15,
+      "activeProductionHours": 5,
+      "machineIds": ["batch_pasteurizer", "bottling_labeling_line"]
+    },
+    {
+      "id": "custard",
+      "name": "Custard",
+      "batchLitres": 220,
+      "frequencyPerWeek": 1,
+      "shelfLifeDays": 15,
+      "activeProductionHours": 5,
+      "machineIds": ["batch_pasteurizer", "bottling_labeling_line"]
+    },
+    {
+      "id": "plain_yoghurt",
+      "name": "Plain yoghurt",
+      "batchLitres": 120,
+      "frequencyPerWeek": 1,
+      "shelfLifeDays": 15,
+      "activeStartHours": 2,
+      "maturationHours": 20,
+      "activeFinishHours": 2,
+      "maturationOccupiesMachine": true,
+      "machineIds": ["batch_pasteurizer", "bottling_labeling_line"]
+    }
+  ],
+  "deliveries": [
+    { "id": "monday_pickup", "day": "Monday", "time": "08:00", "description": "Wholesale pickup" },
+    { "id": "wednesday_pickup", "day": "Wednesday", "time": "08:00", "description": "Wholesale pickup" }
+  ],
+  "schedule": [
+    { "day": "Monday", "start": "08:00", "end": "08:00", "type": "delivery", "description": "Wholesale pickup" },
+    { "day": "Monday", "start": "09:00", "end": "14:00", "type": "production", "productId": "chocolate_milk", "resourceIds": ["batch_pasteurizer", "bottling_labeling_line"] },
+    { "day": "Monday", "start": "16:00", "end": "16:30", "type": "tank_cleaning", "resourceIds": ["raw_milk_tank"] },
+    { "day": "Monday", "start": "17:00", "end": "20:00", "type": "milking", "description": "Evening milking" },
+    { "day": "Tuesday", "start": "08:30", "end": "11:30", "type": "production", "productId": "milk", "resourceIds": ["flow_pasteurizer", "bottling_labeling_line"] },
+    { "day": "Tuesday", "start": "12:00", "end": "17:00", "type": "production", "productId": "custard", "resourceIds": ["batch_pasteurizer", "bottling_labeling_line"] },
+    { "day": "Wednesday", "start": "08:00", "end": "08:00", "type": "delivery", "description": "Wholesale pickup" },
+    { "day": "Wednesday", "start": "16:00", "end": "16:30", "type": "tank_cleaning", "resourceIds": ["raw_milk_tank"] },
+    { "day": "Wednesday", "start": "17:00", "end": "20:00", "type": "milking", "description": "Evening milking" },
+    { "day": "Thursday", "start": "10:00", "end": "12:00", "type": "production_start", "productId": "plain_yoghurt", "resourceIds": ["batch_pasteurizer", "bottling_labeling_line"] },
+    { "day": "Thursday", "start": "12:00", "end": "Friday 08:00", "type": "maturation", "productId": "plain_yoghurt", "resourceIds": ["batch_pasteurizer"] },
+    { "day": "Friday", "start": "08:00", "end": "10:00", "type": "production_finish", "productId": "plain_yoghurt", "resourceIds": ["batch_pasteurizer", "bottling_labeling_line"] },
+    { "day": "Friday", "start": "16:00", "end": "16:30", "type": "tank_cleaning", "resourceIds": ["raw_milk_tank"] },
+    { "day": "Friday", "start": "17:00", "end": "20:00", "type": "milking", "description": "Evening milking" },
+    { "day": "Saturday", "type": "buffer", "description": "No fixed production" },
+    { "day": "Sunday", "start": "09:00", "end": "12:00", "type": "production", "productId": "milk", "resourceIds": ["flow_pasteurizer", "bottling_labeling_line"] }
+  ],
+  "checks": [
+    { "id": "delivery_monday", "status": "ok", "message": "Milk is produced on Sunday before Monday pickup." },
+    { "id": "delivery_wednesday", "status": "ok", "message": "Milk is produced on Tuesday before Wednesday pickup." },
+    { "id": "max_workday", "status": "ok", "message": "Tuesday reaches 8 active hours, equal to the configured limit." },
+    { "id": "tank_age", "status": "warning", "message": "Friday to Monday tank interval is about 71 hours with a 72-hour limit." },
+    { "id": "yoghurt_maturation", "status": "ok", "message": "Yoghurt maturation is scheduled for 20 hours." }
+  ]
+}
