@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Small Dairy Production Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Open-source POC</p>
+    <h1>Small Dairy Production Planner</h1>
+    <p class="subtitle">A visual weekly planning aid for small dairy farms and micro-dairies.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Planning checks</h2>
+      <div class="checks">
+        <article class="check ok"><strong>Monday pickup</strong><span>Sunday milk production is ready before Monday 08:00.</span></article>
+        <article class="check ok"><strong>Wednesday pickup</strong><span>Tuesday milk production is ready before Wednesday 08:00.</span></article>
+        <article class="check ok"><strong>Labour limit</strong><span>Tuesday reaches 8 active hours, equal to the configured limit.</span></article>
+        <article class="check warn"><strong>Raw milk age</strong><span>Friday to Monday tank interval is about 71 hours with a 72-hour limit.</span></article>
+        <article class="check ok"><strong>Yoghurt maturation</strong><span>Thursday 12:00 to Friday 08:00 gives 20 hours.</span></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Example source data</h2>
+      <div class="data-grid">
+        <div><span>Daily milk</span><strong>300 litres</strong></div>
+        <div><span>Milkings</span><strong>05:00-08:00 and 17:00-20:00</strong></div>
+        <div><span>Raw milk tank</span><strong>1700 litres</strong></div>
+        <div><span>Maximum tank age</span><strong>72 hours</strong></div>
+        <div><span>Delivery deadlines</span><strong>Monday and Wednesday 08:00</strong></div>
+        <div><span>Maximum active workday</span><strong>8 hours</strong></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Visual week plan</h2>
+      <div class="legend">
+        <span><i class="milk"></i>Milk</span>
+        <span><i class="batch"></i>Batch product</span>
+        <span><i class="yoghurt"></i>Yoghurt</span>
+        <span><i class="cleaning"></i>Tank cleaning</span>
+        <span><i class="milking"></i>Milking</span>
+        <span><i class="delivery"></i>Delivery</span>
+      </div>
+
+      <div class="week">
+        <section class="day"><h3>Monday</h3><div class="event delivery">08:00 Pickup</div><div class="event batch">09:00-14:00 Chocolate milk</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
+        <section class="day"><h3>Tuesday</h3><div class="event milk">08:30-11:30 Bottled milk</div><div class="event batch">12:00-17:00 Custard</div></section>
+        <section class="day"><h3>Wednesday</h3><div class="event delivery">08:00 Pickup</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
+        <section class="day"><h3>Thursday</h3><div class="event yoghurt">10:00-12:00 Start yoghurt</div><div class="event yoghurt">12:00-Friday 08:00 Maturation</div></section>
+        <section class="day"><h3>Friday</h3><div class="event yoghurt">08:00-10:00 Finish yoghurt</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
+        <section class="day"><h3>Saturday</h3><div class="event buffer">Buffer day</div></section>
+        <section class="day"><h3>Sunday</h3><div class="event milk">09:00-12:00 Bottled milk</div></section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>This demo is a planning aid only. It does not replace food safety, legal or HACCP validation.</p>
+  </footer>
+</body>
+</html>
