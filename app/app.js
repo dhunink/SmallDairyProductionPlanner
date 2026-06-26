@@ -89,7 +89,7 @@ function renderWeek(data) {
   });
 }
 
-fetch("../examples/small-dairy-example.json")
+fetch("small-dairy-example.json")
   .then((response) => {
     if (!response.ok) throw new Error("Could not load example data");
     return response.json();
