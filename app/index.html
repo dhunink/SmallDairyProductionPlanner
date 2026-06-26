@@ -11,30 +11,27 @@
     <p class="eyebrow">Open-source POC</p>
     <h1>Small Dairy Production Planner</h1>
     <p class="subtitle">A visual weekly planning aid for small dairy farms and micro-dairies.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/dhunink/SmallDairyProductionPlanner">GitHub repository</a>
+      <a href="../examples/small-dairy-example.json">Example JSON</a>
+      <a href="https://github.com/dhunink/SmallDairyProductionPlanner/blob/main/docs/concept.md">Concept docs</a>
+    </div>
   </header>
 
   <main>
+    <section class="notice">
+      <strong>Planning aid only.</strong>
+      This demo does not replace food safety advice, legal compliance checks, HACCP procedures or local regulatory validation.
+    </section>
+
     <section class="panel">
       <h2>Planning checks</h2>
-      <div class="checks">
-        <article class="check ok"><strong>Monday pickup</strong><span>Sunday milk production is ready before Monday 08:00.</span></article>
-        <article class="check ok"><strong>Wednesday pickup</strong><span>Tuesday milk production is ready before Wednesday 08:00.</span></article>
-        <article class="check ok"><strong>Labour limit</strong><span>Tuesday reaches 8 active hours, equal to the configured limit.</span></article>
-        <article class="check warn"><strong>Raw milk age</strong><span>Friday to Monday tank interval is about 71 hours with a 72-hour limit.</span></article>
-        <article class="check ok"><strong>Yoghurt maturation</strong><span>Thursday 12:00 to Friday 08:00 gives 20 hours.</span></article>
-      </div>
+      <div id="checks" class="checks"></div>
     </section>
 
     <section class="panel">
       <h2>Example source data</h2>
-      <div class="data-grid">
-        <div><span>Daily milk</span><strong>300 litres</strong></div>
-        <div><span>Milkings</span><strong>05:00-08:00 and 17:00-20:00</strong></div>
-        <div><span>Raw milk tank</span><strong>1700 litres</strong></div>
-        <div><span>Maximum tank age</span><strong>72 hours</strong></div>
-        <div><span>Delivery deadlines</span><strong>Monday and Wednesday 08:00</strong></div>
-        <div><span>Maximum active workday</span><strong>8 hours</strong></div>
-      </div>
+      <div id="source-data" class="data-grid"></div>
     </section>
 
     <section class="panel">
@@ -46,22 +43,16 @@
         <span><i class="cleaning"></i>Tank cleaning</span>
         <span><i class="milking"></i>Milking</span>
         <span><i class="delivery"></i>Delivery</span>
+        <span><i class="buffer"></i>Buffer</span>
       </div>
-
-      <div class="week">
-        <section class="day"><h3>Monday</h3><div class="event delivery">08:00 Pickup</div><div class="event batch">09:00-14:00 Chocolate milk</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
-        <section class="day"><h3>Tuesday</h3><div class="event milk">08:30-11:30 Bottled milk</div><div class="event batch">12:00-17:00 Custard</div></section>
-        <section class="day"><h3>Wednesday</h3><div class="event delivery">08:00 Pickup</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
-        <section class="day"><h3>Thursday</h3><div class="event yoghurt">10:00-12:00 Start yoghurt</div><div class="event yoghurt">12:00-Friday 08:00 Maturation</div></section>
-        <section class="day"><h3>Friday</h3><div class="event yoghurt">08:00-10:00 Finish yoghurt</div><div class="event cleaning">16:00-16:30 Tank cleaning</div><div class="event milking">17:00-20:00 Evening milking</div></section>
-        <section class="day"><h3>Saturday</h3><div class="event buffer">Buffer day</div></section>
-        <section class="day"><h3>Sunday</h3><div class="event milk">09:00-12:00 Bottled milk</div></section>
-      </div>
+      <div id="week" class="week"></div>
     </section>
   </main>
 
   <footer>
-    <p>This demo is a planning aid only. It does not replace food safety, legal or HACCP validation.</p>
+    <p>Loaded from <code>examples/small-dairy-example.json</code>. Fork the repository and adapt the example data for your own workflow.</p>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
