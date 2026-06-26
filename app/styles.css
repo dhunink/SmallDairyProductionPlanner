@@ -29,6 +29,7 @@ h2, h3 { margin-top: 0; }
 main { padding: 24px clamp(18px, 5vw, 56px) 48px; display: grid; gap: 24px; }
 .panel, .notice { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: 0 10px 30px rgba(20, 40, 30, .05); }
 .notice { background: #fff9e8; color: #5b4300; }
+.notice.error { background: #fff1f1; color: #6b1f1f; }
 .notice strong { display: block; margin-bottom: 4px; }
 .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
 .check { border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 6px; text-transform: capitalize; }
@@ -38,13 +39,21 @@ main { padding: 24px clamp(18px, 5vw, 56px) 48px; display: grid; gap: 24px; }
 .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
 .data-grid div { border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
 .data-grid span { display: block; margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+table { width: 100%; min-width: 760px; border-collapse: collapse; background: #fff; }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+th { background: #f8faf7; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 700; color: var(--text); }
 .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: 14px; }
 .legend span { display: inline-flex; gap: 6px; align-items: center; }
 .legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; border: 1px solid rgba(0,0,0,.08); }
 .week { display: grid; grid-template-columns: repeat(7, minmax(160px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 4px; }
 .day { min-width: 160px; background: #fbfcfb; border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
 .day h3 { font-size: 16px; margin-bottom: 12px; }
-.event { border-radius: 12px; padding: 10px; margin-bottom: 8px; border: 1px solid rgba(0,0,0,.08); font-size: 14px; font-weight: 600; }
+.event { border-radius: 12px; padding: 10px; margin-bottom: 8px; border: 1px solid rgba(0,0,0,.08); font-size: 14px; font-weight: 600; display: grid; gap: 4px; }
+.event-time, .event-meta { color: var(--muted); font-size: 12px; font-weight: 500; }
+.event-title { line-height: 1.25; }
 .milk { background: var(--milk); }
 .batch { background: var(--batch); }
 .yoghurt { background: var(--yoghurt); }
