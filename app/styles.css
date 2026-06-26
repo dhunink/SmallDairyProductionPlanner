@@ -17,18 +17,24 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+a { color: inherit; }
 .hero { padding: 36px clamp(18px, 5vw, 56px); background: linear-gradient(135deg, #f6f7f4, #e7f1e7); border-bottom: 1px solid var(--line); }
 .eyebrow { margin: 0 0 8px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; font-size: 12px; }
 h1 { margin: 0 0 8px; font-size: clamp(32px, 5vw, 56px); }
 h2, h3 { margin-top: 0; }
-.subtitle { margin: 0; color: var(--muted); font-size: 18px; }
+.subtitle { margin: 0; color: var(--muted); font-size: 18px; max-width: 850px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.hero-actions a { background: rgba(255,255,255,.72); border: 1px solid var(--line); border-radius: 999px; padding: 9px 13px; text-decoration: none; font-weight: 650; font-size: 14px; }
+.hero-actions a:hover { background: #fff; }
 main { padding: 24px clamp(18px, 5vw, 56px) 48px; display: grid; gap: 24px; }
-.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: 0 10px 30px rgba(20, 40, 30, .05); }
+.panel, .notice { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: 0 10px 30px rgba(20, 40, 30, .05); }
+.notice { background: #fff9e8; color: #5b4300; }
+.notice strong { display: block; margin-bottom: 4px; }
 .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.check { border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 6px; }
+.check { border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 6px; text-transform: capitalize; }
 .check.ok { background: var(--ok); }
 .check.warn { background: var(--warn); }
-.check span, .data-grid span { color: var(--muted); font-size: 13px; }
+.check span, .data-grid span { color: var(--muted); font-size: 13px; text-transform: none; }
 .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
 .data-grid div { border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
 .data-grid span { display: block; margin-bottom: 4px; }
@@ -47,4 +53,5 @@ main { padding: 24px clamp(18px, 5vw, 56px) 48px; display: grid; gap: 24px; }
 .delivery { background: var(--delivery); }
 .buffer { background: var(--buffer); }
 footer { padding: 20px clamp(18px, 5vw, 56px); border-top: 1px solid var(--line); color: var(--muted); }
+code { background: rgba(0,0,0,.06); padding: 2px 5px; border-radius: 5px; }
 @media (max-width: 900px) { .week { grid-template-columns: 1fr; } }
