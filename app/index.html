@@ -24,6 +24,8 @@
       This demo does not replace food safety advice, legal compliance checks, HACCP procedures or local regulatory validation.
     </section>
 
+    <section id="load-error" class="notice error" hidden></section>
+
     <section class="panel">
       <h2>Planning checks</h2>
       <div id="checks" class="checks"></div>
@@ -32,6 +34,25 @@
     <section class="panel">
       <h2>Example source data</h2>
       <div id="source-data" class="data-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Product overview</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Batch output</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Shelf life</th>
+              <th scope="col">Active time</th>
+              <th scope="col">Resources</th>
+            </tr>
+          </thead>
+          <tbody id="product-overview"></tbody>
+        </table>
+      </div>
     </section>
 
     <section class="panel">
@@ -47,10 +68,27 @@
       </div>
       <div id="week" class="week"></div>
     </section>
+
+    <section class="panel">
+      <h2>Machine and resource usage</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Resource</th>
+              <th scope="col">Scheduled tasks</th>
+              <th scope="col">Products</th>
+              <th scope="col">Occupied slots</th>
+            </tr>
+          </thead>
+          <tbody id="resource-usage"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>Loaded from <code>examples/small-dairy-example.json</code>. Fork the repository and adapt the example data for your own workflow.</p>
+    <p>Loaded from <code>app/small-dairy-example.json</code>. Fork the repository and adapt the example data for your own workflow.</p>
   </footer>
 
   <script src="app.js"></script>
