@@ -17,6 +17,20 @@ Small Dairy Production Planner helps producers reason about weekly production sc
 
 The project started from a practical farm-dairy planning need and is being generalized so other small producers can adapt the model to their own workflow.
 
+## Live demo
+
+GitHub Pages demo:
+
+```text
+https://dhunink.github.io/SmallDairyProductionPlanner/
+```
+
+The demo loads its schedule from:
+
+```text
+examples/small-dairy-example.json
+```
+
 ## Current status
 
 This repository is in an early proof-of-concept stage.
@@ -25,8 +39,8 @@ The first version contains:
 
 - a generic example dataset;
 - documentation for the planning concept and data model;
-- a static visual planner demo;
-- a roadmap for turning the demo into a data-driven scheduling tool.
+- a browser-based visual planner demo;
+- a roadmap for turning the demo into a more complete scheduling tool.
 
 It is not yet an automated optimizer. The first goal is to make assumptions visible, compare schedule variants, and catch obvious planning conflicts.
 
@@ -46,7 +60,7 @@ Typical questions this project aims to support:
 
 ```text
 .
-├─ app/                         Static visual demo
+├─ app/                         Browser demo
 ├─ docs/                        Project documentation
 ├─ examples/                    Generic example datasets
 ├─ LICENSE
@@ -56,13 +70,21 @@ Typical questions this project aims to support:
 
 ## Quick start
 
-Open the static demo:
+Use the live demo, or open the static app locally:
 
 ```text
 app/index.html
 ```
 
-For GitHub Pages, publish the `app/` folder or copy it to the Pages source used by your repository.
+When opening the app directly as a local file, browser security settings may prevent loading the example JSON. In that case, use GitHub Pages or run any simple static file server.
+
+## Documentation
+
+- [Concept](docs/concept.md)
+- [Data model](docs/data-model.md)
+- [Scheduling rules](docs/scheduling-rules.md)
+- [Examples](docs/examples.md)
+- [Roadmap](roadmap.md)
 
 ## Important disclaimer
 
